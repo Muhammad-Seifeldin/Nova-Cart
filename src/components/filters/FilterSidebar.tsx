@@ -46,6 +46,7 @@ export default function FilterSidebar() {
 				</h4>
 				<div className="flex flex-col gap-1">
 					<button
+						type="button"
 						onClick={() => setCategory("")}
 						className={cn(
 							"text-sm text-left px-3 py-2 rounded-lg transition-colors capitalize",
@@ -58,6 +59,7 @@ export default function FilterSidebar() {
 					</button>
 					{categories.map((cat) => (
 						<button
+							type="button"
 							key={cat}
 							onClick={() => setCategory(cat)}
 							className={cn(
@@ -86,10 +88,14 @@ export default function FilterSidebar() {
 						<span>${maxPrice}</span>
 					</div>
 					<div className="flex flex-col gap-2">
-						<label className="text-xs text-[#6B7280] dark:text-[#9CA3AF]">
+						<label
+							htmlFor="min-price"
+							className="text-xs text-[#6B7280] dark:text-[#9CA3AF]"
+						>
 							Min: ${minPrice}
 						</label>
 						<input
+							id="min-price"
 							type="range"
 							min={0}
 							max={1000}
@@ -98,10 +104,14 @@ export default function FilterSidebar() {
 							onChange={(e) => setMinPrice(Number(e.target.value))}
 							className="w-full accent-[#5B6CFF]"
 						/>
-						<label className="text-xs text-[#6B7280] dark:text-[#9CA3AF]">
+						<label
+							htmlFor="max-price"
+							className="text-xs text-[#6B7280] dark:text-[#9CA3AF]"
+						>
 							Max: ${maxPrice}
 						</label>
 						<input
+							id="max-price"
 							type="range"
 							min={0}
 							max={1000}
@@ -124,6 +134,7 @@ export default function FilterSidebar() {
 				<div className="flex flex-col gap-1">
 					{[0, 1, 2, 3, 4].map((rating) => (
 						<button
+							type="button"
 							key={rating}
 							onClick={() => setMinRating(rating)}
 							className={cn(
@@ -137,9 +148,9 @@ export default function FilterSidebar() {
 								<span>All ratings</span>
 							) : (
 								<div className="flex items-center gap-1">
-									{Array.from({ length: rating }).map((_, i) => (
+									{[1, 2, 3, 4, 5].slice(0, rating).map((star) => (
 										<Star
-											key={i}
+											key={star}
 											className={cn(
 												"h-3.5 w-3.5",
 												minRating === rating
