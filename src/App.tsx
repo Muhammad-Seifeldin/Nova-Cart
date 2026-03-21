@@ -8,10 +8,12 @@ import ContactPage from "@/pages/ContactPage";
 import AboutPage from "@/pages/AboutPage";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 
 export default function App() {
 	return (
 		<div className="min-h-screen flex flex-col bg-[#FFFFFF] dark:bg-[#0F1115]">
+			<ScrollToTop />
 			<Navbar />
 			<main className="flex-1">
 				<Routes>
