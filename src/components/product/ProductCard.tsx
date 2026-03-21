@@ -73,7 +73,7 @@ const ProductCard = memo(function ProductCard({
 				<Link
 					to={`/product/${product.id}`}
 					onClick={(e) => e.stopPropagation()}
-					className="text-sm font-medium text-[#1A1A1A] dark:text-[#F3F4F6] line-clamp-2 min-h-[2.5rem] hover:text-[#5B6CFF] dark:hover:text-[#7C8CFF] transition-colors"
+					className="text-sm font-medium text-[#1A1A1A] dark:text-[#F3F4F6] line-clamp-2 min-h-10 hover:text-[#5B6CFF] dark:hover:text-[#7C8CFF] transition-colors"
 				>
 					{product.title}
 				</Link>
