@@ -1,0 +1,21 @@
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cart icon mark -->
+  <g>
+    <rect x="2" y="4" width="32" height="32" rx="8" fill="#7C8CFF"/>
+    <!-- Cart body -->
+    <path d="M9 13h2.5l3.2 9.5h8.6l2.7-7H13.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Cart wheels -->
+    <circle cx="16.5" cy="25.5" r="1.5" fill="white"/>
+    <circle cx="22.5" cy="25.5" r="1.5" fill="white"/>
+    <!-- Nova spark top-right of icon -->
+    <circle cx="27" cy="10" r="2" fill="#FACC15"/>
+    <line x1="27" y1="7" x2="27" y2="6" stroke="#FACC15" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="27" y1="13" x2="27" y2="14" stroke="#FACC15" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="24" y1="10" x2="23" y2="10" stroke="#FACC15" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="30" y1="10" x2="31" y2="10" stroke="#FACC15" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="44" y="28" font-family="'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.5" fill="#F3F4F6">Nova</text>
+  <text x="95" y="28" font-family="'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.5" fill="#7C8CFF">Cart</text>
+</svg>
