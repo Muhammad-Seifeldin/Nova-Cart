@@ -131,20 +131,6 @@ export default function Navbar() {
 												{link.label}
 											</Link>
 										))}
-										<Link
-											to="/contact"
-											onClick={() => setMobileOpen(false)}
-											className="text-base font-medium text-[#1A1A1A] dark:text-[#F3F4F6] hover:text-[#5B6CFF] dark:hover:text-[#7C8CFF] transition-colors"
-										>
-											Contact
-										</Link>
-										<Link
-											to="/about"
-											onClick={() => setMobileOpen(false)}
-											className="text-base font-medium text-[#1A1A1A] dark:text-[#F3F4F6] hover:text-[#5B6CFF] dark:hover:text-[#7C8CFF] transition-colors"
-										>
-											About
-										</Link>
 									</nav>
 								</div>
 							</SheetContent>
