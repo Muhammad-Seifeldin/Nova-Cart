@@ -51,6 +51,7 @@ export default function ShopPage() {
 					/>
 					{searchQuery && (
 						<button
+							type="button"
 							onClick={() => setSearchQuery("")}
 							className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B7280] dark:text-[#9CA3AF] hover:text-[#1A1A1A] dark:hover:text-[#F3F4F6]"
 						>
@@ -61,7 +62,7 @@ export default function ShopPage() {
 
 				{/* Mobile Filter Button */}
 				<Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-					<SheetTrigger asChild>
+					<SheetTrigger>
 						<Button
 							variant="outline"
 							className="lg:hidden border-[#E6E8EC] dark:border-[#2A2F3A] text-[#1A1A1A] dark:text-[#F3F4F6] rounded-xl"

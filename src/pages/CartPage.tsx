@@ -34,15 +34,13 @@ export default function CartPage() {
 					Looks like you haven't added anything to your cart yet. Start shopping
 					to fill it up!
 				</p>
-				<Button
-					asChild
-					className="bg-[#5B6CFF] hover:bg-[#4A5AF0] text-white rounded-xl px-8 transition-colors"
+				<Link
+					to="/shop"
+					className="bg-[#5B6CFF] hover:bg-[#4A5AF0] text-white rounded-xl px-8 py-2.5 text-sm font-medium transition-colors flex items-center gap-2"
 				>
-					<Link to="/shop">
-						Start Shopping
-						<ArrowRight className="h-4 w-4 ml-2" />
-					</Link>
-				</Button>
+					Start Shopping
+					<ArrowRight className="h-4 w-4" />
+				</Link>
 			</motion.div>
 		);
 	}
@@ -56,16 +54,13 @@ export default function CartPage() {
 		>
 			{/* Header */}
 			<div className="flex items-center gap-4 mb-8">
-				<Button
-					variant="ghost"
-					asChild
-					className="text-[#6B7280] dark:text-[#9CA3AF] hover:text-[#1A1A1A] dark:hover:text-[#F3F4F6] rounded-xl -ml-2"
+				<Link
+					to="/shop"
+					className="flex items-center text-sm font-medium text-[#6B7280] dark:text-[#9CA3AF] hover:text-[#1A1A1A] dark:hover:text-[#F3F4F6] transition-colors -ml-2 px-3 py-2 rounded-xl"
 				>
-					<Link to="/shop">
-						<ArrowLeft className="h-4 w-4 mr-2" />
-						Continue Shopping
-					</Link>
-				</Button>
+					<ArrowLeft className="h-4 w-4 mr-2" />
+					Continue Shopping
+				</Link>
 			</div>
 
 			<h1 className="text-3xl font-bold text-[#1A1A1A] dark:text-[#F3F4F6] mb-2">

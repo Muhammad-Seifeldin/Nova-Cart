@@ -87,7 +87,7 @@ export default function Navbar() {
 
 						{/* Mobile Menu */}
 						<Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-							<SheetTrigger asChild>
+							<SheetTrigger>
 								<Button
 									variant="ghost"
 									size="icon"

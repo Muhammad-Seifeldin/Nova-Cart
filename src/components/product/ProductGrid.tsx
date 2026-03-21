@@ -32,11 +32,12 @@ export default function ProductGrid({
 	}
 
 	if (isLoading) {
+		const skeletons = ["sk1", "sk2", "sk3", "sk4", "sk5", "sk6", "sk7", "sk8"];
 		return (
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-				{Array.from({ length: 8 }).map((_, i) => (
+				{skeletons.map((id) => (
 					<div
-						key={i}
+						key={id}
 						className="bg-[#F8F9FB] dark:bg-[#171923] border border-[#E6E8EC] dark:border-[#2A2F3A] rounded-2xl p-3"
 					>
 						<Skeleton className="aspect-square rounded-xl mb-3" />

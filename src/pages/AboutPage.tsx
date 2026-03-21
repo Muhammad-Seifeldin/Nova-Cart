@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
@@ -120,15 +119,13 @@ export default function AboutPage() {
 						Explore our full catalog and find your next favorite product.
 					</p>
 					<motion.div whileTap={{ scale: 0.97 }}>
-						<Button
-							asChild
-							className="bg-[#5B6CFF] hover:bg-[#4A5AF0] text-white rounded-xl px-8 transition-colors"
+						<Link
+							to="/shop"
+							className="bg-[#5B6CFF] hover:bg-[#4A5AF0] text-white rounded-xl px-8 py-2.5 text-sm font-medium transition-colors flex items-center gap-2"
 						>
-							<Link to="/shop">
-								Shop Now
-								<ArrowRight className="h-4 w-4 ml-2" />
-							</Link>
-						</Button>
+							Shop Now
+							<ArrowRight className="h-4 w-4" />
+						</Link>
 					</motion.div>
 				</motion.div>
 			</div>

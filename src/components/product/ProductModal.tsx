@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Star, ShoppingCart, X } from "lucide-react";
+import { Star, ShoppingCart } from "lucide-react";
 import { motion } from "motion/react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -66,11 +66,11 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
 						{/* Rating */}
 						<div className="flex items-center gap-1">
-							{Array.from({ length: 5 }).map((_, i) => (
+							{[1, 2, 3, 4, 5].map((star) => (
 								<Star
-									key={i}
+									key={star}
 									className={`h-4 w-4 ${
-										i < Math.round(product.rating.rate)
+										star <= Math.round(product.rating.rate)
 											? "fill-[#FACC15] text-[#FACC15]"
 											: "text-[#E6E8EC] dark:text-[#2A2F3A]"
 									}`}

@@ -74,11 +74,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 					{/* Rating */}
 					<div className="flex items-center gap-2">
 						<div className="flex items-center gap-1">
-							{Array.from({ length: 5 }).map((_, i) => (
+							{[1, 2, 3, 4, 5].map((star) => (
 								<Star
-									key={i}
+									key={star}
 									className={`h-5 w-5 ${
-										i < Math.round(product.rating.rate)
+										star <= Math.round(product.rating.rate)
 											? "fill-[#FACC15] text-[#FACC15]"
 											: "text-[#E6E8EC] dark:text-[#2A2F3A]"
 									}`}
