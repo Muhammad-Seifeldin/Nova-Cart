@@ -63,17 +63,17 @@ const ProductCard = memo(function ProductCard({
 			</div>
 
 			{/* Content */}
-			<div className="flex flex-col gap-2">
+			<div className="flex flex-col gap-2 flex-1">
 				{/* Category */}
 				<span className="text-xs text-[#6B7280] dark:text-[#9CA3AF] capitalize">
 					{product.category}
 				</span>
 
-				{/* Title */}
+				{/* Title — always reserves 2 lines */}
 				<Link
 					to={`/product/${product.id}`}
 					onClick={(e) => e.stopPropagation()}
-					className="text-sm font-medium text-[#1A1A1A] dark:text-[#F3F4F6] line-clamp-2 hover:text-[#5B6CFF] dark:hover:text-[#7C8CFF] transition-colors"
+					className="text-sm font-medium text-[#1A1A1A] dark:text-[#F3F4F6] line-clamp-2 min-h-[2.5rem] hover:text-[#5B6CFF] dark:hover:text-[#7C8CFF] transition-colors"
 				>
 					{product.title}
 				</Link>
@@ -101,16 +101,18 @@ const ProductCard = memo(function ProductCard({
 					)}
 				</div>
 
-				{/* Add to Cart */}
-				<motion.div whileTap={{ scale: 0.97 }}>
-					<Button
-						onClick={handleAddToCart}
-						className="w-full bg-[#5B6CFF] hover:bg-[#4A5AF0] text-white rounded-xl px-4 py-2 transition-colors text-sm mt-1"
-					>
-						<ShoppingCart className="h-4 w-4 mr-2" />
-						Add to Cart
-					</Button>
-				</motion.div>
+				{/* Add to Cart — always at bottom */}
+				<div className="mt-auto pt-1">
+					<motion.div whileTap={{ scale: 0.97 }}>
+						<Button
+							onClick={handleAddToCart}
+							className="w-full bg-[#5B6CFF] hover:bg-[#4A5AF0] text-white rounded-xl px-4 py-2 transition-colors text-sm"
+						>
+							<ShoppingCart className="h-4 w-4 mr-2" />
+							Add to Cart
+						</Button>
+					</motion.div>
+				</div>
 			</div>
 		</motion.div>
 	);

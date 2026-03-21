@@ -12,7 +12,8 @@ import { useFilterStore } from "@/store/filterStore";
 export default function Navbar() {
 	const [searchValue, setSearchValue] = useState("");
 	const [mobileOpen, setMobileOpen] = useState(false);
-	const totalItems = useCartStore((state) => state.totalItems);
+	const items = useCartStore((state) => state.items);
+	const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
 	const setSearchQuery = useFilterStore((state) => state.setSearchQuery);
 	const navigate = useNavigate();
 
@@ -24,8 +25,9 @@ export default function Navbar() {
 
 	const navLinks = [
 		{ label: "Shop", to: "/shop" },
-		{ label: "Categories", to: "/shop" },
 		{ label: "Deals", to: "/shop" },
+		{ label: "About", to: "/about" },
+		{ label: "Contact", to: "/contact" },
 	];
 
 	return (
@@ -77,9 +79,9 @@ export default function Navbar() {
 								className="relative rounded-xl text-[#6B7280] dark:text-[#9CA3AF] hover:text-[#1A1A1A] dark:hover:text-[#F3F4F6]"
 							>
 								<ShoppingCart className="h-5 w-5" />
-								{totalItems() > 0 && (
+								{totalItems > 0 && (
 									<span className="absolute -top-1 -right-1 bg-[#5B6CFF] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
-										{totalItems()}
+										{totalItems}
 									</span>
 								)}
 							</Button>
