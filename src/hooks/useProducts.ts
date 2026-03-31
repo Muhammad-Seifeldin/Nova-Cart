@@ -24,7 +24,7 @@ export function useProducts() {
 	const filtered = products.filter((product: Product) => {
 		const matchesCategory = category ? product.category === category : true;
 		const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
-		const matchesRating = product.rating.rate >= minRating;
+		const matchesRating = product.rating >= minRating;
 		const matchesSearch = product.title
 			.toLowerCase()
 			.includes(searchQuery.toLowerCase());
@@ -64,7 +64,7 @@ export function useTrendingProducts() {
 	});
 
 	const trending = [...products]
-		.sort((a, b) => b.rating.rate - a.rating.rate)
+		.sort((a, b) => b.rating - a.rating)
 		.slice(0, 8);
 
 	return { products: trending, isLoading, isError };
@@ -82,7 +82,7 @@ export function useBestSellers() {
 	});
 
 	const bestSellers = [...products]
-		.sort((a, b) => b.rating.count - a.rating.count)
+		.sort((a, b) => b.reviews.length - a.reviews.length)
 		.slice(0, 8);
 
 	return { products: bestSellers, isLoading, isError };
@@ -99,9 +99,7 @@ export function useTopRated() {
 		staleTime: 1000 * 60 * 5,
 	});
 
-	const topRated = products.filter(
-		(product: Product) => product.rating.rate >= 4.5,
-	);
+	const topRated = products.filter((product: Product) => product.rating >= 4.5);
 
 	return { products: topRated, isLoading, isError };
 }

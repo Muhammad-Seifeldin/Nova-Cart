@@ -20,8 +20,6 @@ const ProductCard = memo(function ProductCard({
 }: ProductCardProps) {
 	const addItem = useCartStore((state) => state.addItem);
 
-	const discount = product.rating.count > 300 ? 10 : null;
-
 	function handleAddToCart(e: React.MouseEvent) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -41,14 +39,14 @@ const ProductCard = memo(function ProductCard({
 			animate={{ opacity: 1, y: 0 }}
 			whileHover={{ scale: 1.02, y: -2 }}
 			transition={{ duration: 0.2, ease: "easeOut" }}
-			className="group relative bg-[#F8F9FB] dark:bg-[#171923] border border-[#E6E8EC] dark:border-[#2A2F3A] rounded-2xl p-3 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+			className="group relative bg-[#F8F9FB] dark:bg-[#171923] border border-[#E6E8EC] dark:border-[#2A2F3A] rounded-2xl p-3 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col"
 			onClick={handleQuickView}
 		>
 			{/* Discount Badge */}
-			{discount && (
+			{product.discountPercentage > 0 && (
 				<div className="absolute top-3 left-3 z-10">
 					<Badge className="bg-[#EF4444] dark:bg-[#F87171] text-white text-xs px-2 py-1 rounded-full border-0">
-						-{discount}%
+						-{Math.round(product.discountPercentage)}%
 					</Badge>
 				</div>
 			)}
@@ -56,7 +54,7 @@ const ProductCard = memo(function ProductCard({
 			{/* Image */}
 			<div className="relative aspect-square rounded-xl overflow-hidden bg-white dark:bg-[#0F1115] mb-3">
 				<img
-					src={product.image}
+					src={product.thumbnail}
 					alt={product.title}
 					className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
 				/>
@@ -69,7 +67,7 @@ const ProductCard = memo(function ProductCard({
 					{product.category}
 				</span>
 
-				{/* Title — always reserves 2 lines */}
+				{/* Title */}
 				<Link
 					to={`/product/${product.id}`}
 					onClick={(e) => e.stopPropagation()}
@@ -82,10 +80,10 @@ const ProductCard = memo(function ProductCard({
 				<div className="flex items-center gap-1">
 					<Star className="h-3.5 w-3.5 fill-[#FACC15] text-[#FACC15]" />
 					<span className="text-xs font-medium text-[#1A1A1A] dark:text-[#F3F4F6]">
-						{product.rating.rate}
+						{product.rating.toFixed(1)}
 					</span>
 					<span className="text-xs text-[#6B7280] dark:text-[#9CA3AF]">
-						({product.rating.count})
+						({product.reviews.length} reviews)
 					</span>
 				</div>
 
@@ -94,14 +92,16 @@ const ProductCard = memo(function ProductCard({
 					<span className="text-base font-bold text-[#1A1A1A] dark:text-[#F3F4F6]">
 						{formatPrice(product.price)}
 					</span>
-					{discount && (
+					{product.discountPercentage > 0 && (
 						<span className="text-xs text-[#6B7280] dark:text-[#9CA3AF] line-through">
-							{formatPrice(product.price * (1 + discount / 100))}
+							{formatPrice(
+								product.price / (1 - product.discountPercentage / 100),
+							)}
 						</span>
 					)}
 				</div>
 
-				{/* Add to Cart — always at bottom */}
+				{/* Add to Cart */}
 				<div className="mt-auto pt-1">
 					<motion.div whileTap={{ scale: 0.97 }}>
 						<Button

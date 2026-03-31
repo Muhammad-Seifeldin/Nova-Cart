@@ -46,7 +46,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 					{/* Image */}
 					<div className="bg-[#F8F9FB] dark:bg-[#0F1115] flex items-center justify-center p-8 min-h-[260px]">
 						<img
-							src={product.image}
+							src={product.thumbnail}
 							alt={product.title}
 							className="max-h-52 w-full object-contain"
 						/>
@@ -70,14 +70,14 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 								<Star
 									key={star}
 									className={`h-4 w-4 ${
-										star <= Math.round(product.rating.rate)
+										star <= Math.round(product.rating)
 											? "fill-[#FACC15] text-[#FACC15]"
 											: "text-[#E6E8EC] dark:text-[#2A2F3A]"
 									}`}
 								/>
 							))}
 							<span className="text-xs text-[#6B7280] dark:text-[#9CA3AF] ml-1">
-								({product.rating.count} reviews)
+								({product.reviews.length} reviews)
 							</span>
 						</div>
 
@@ -86,8 +86,8 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 							<span className="text-2xl font-bold text-[#1A1A1A] dark:text-[#F3F4F6]">
 								{formatPrice(product.price)}
 							</span>
-							<Badge className="bg-[#EF4444] dark:bg-[#F87171] text-white border-0 rounded-full text-xs">
-								In Stock
+							<Badge className="bg-[#22C55E]/10 text-[#22C55E] border-0 rounded-full text-xs">
+								{product.availabilityStatus}
 							</Badge>
 						</div>
 

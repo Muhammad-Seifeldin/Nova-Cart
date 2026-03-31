@@ -69,7 +69,7 @@ export default function FilterSidebar() {
 									: "text-[#6B7280] dark:text-[#9CA3AF] hover:bg-[#E6E8EC] dark:hover:bg-[#2A2F3A]",
 							)}
 						>
-							{cat}
+							{cat.replace(/-/g, " ")}
 						</button>
 					))}
 				</div>

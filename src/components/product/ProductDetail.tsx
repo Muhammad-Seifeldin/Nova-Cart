@@ -45,13 +45,32 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 					initial={{ opacity: 0, x: -16 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.3, ease: "easeOut" }}
-					className="bg-[#F8F9FB] dark:bg-[#171923] border border-[#E6E8EC] dark:border-[#2A2F3A] rounded-2xl flex items-center justify-center p-12 min-h-[400px]"
+					className="flex flex-col gap-4"
 				>
-					<img
-						src={product.image}
-						alt={product.title}
-						className="max-h-80 w-full object-contain"
-					/>
+					<div className="bg-[#F8F9FB] dark:bg-[#171923] border border-[#E6E8EC] dark:border-[#2A2F3A] rounded-2xl flex items-center justify-center p-12 min-h-[400px]">
+						<img
+							src={product.thumbnail}
+							alt={product.title}
+							className="max-h-80 w-full object-contain"
+						/>
+					</div>
+					{/* Thumbnail Strip */}
+					{product.images.length > 1 && (
+						<div className="flex gap-2 overflow-x-auto pb-1">
+							{product.images.map((img, index) => (
+								<div
+									key={img}
+									className="shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-[#F8F9FB] dark:bg-[#171923] border border-[#E6E8EC] dark:border-[#2A2F3A] flex items-center justify-center p-1"
+								>
+									<img
+										src={img}
+										alt={`${product.title} ${index + 1}`}
+										className="w-full h-full object-contain"
+									/>
+								</div>
+							))}
+						</div>
+					)}
 				</motion.div>
 
 				{/* Right: Details */}
@@ -61,10 +80,20 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 					transition={{ duration: 0.3, ease: "easeOut", delay: 0.05 }}
 					className="flex flex-col gap-6"
 				>
-					{/* Category */}
-					<span className="text-sm text-[#6B7280] dark:text-[#9CA3AF] capitalize">
-						{product.category}
-					</span>
+					{/* Category + Brand */}
+					<div className="flex items-center gap-2">
+						<span className="text-sm text-[#6B7280] dark:text-[#9CA3AF] capitalize">
+							{product.category}
+						</span>
+						{product.brand && (
+							<>
+								<span className="text-[#6B7280] dark:text-[#9CA3AF]">·</span>
+								<span className="text-sm text-[#6B7280] dark:text-[#9CA3AF]">
+									{product.brand}
+								</span>
+							</>
+						)}
+					</div>
 
 					{/* Title */}
 					<h1 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] dark:text-[#F3F4F6] leading-tight">
@@ -78,7 +107,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 								<Star
 									key={star}
 									className={`h-5 w-5 ${
-										star <= Math.round(product.rating.rate)
+										star <= Math.round(product.rating)
 											? "fill-[#FACC15] text-[#FACC15]"
 											: "text-[#E6E8EC] dark:text-[#2A2F3A]"
 									}`}
@@ -86,10 +115,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 							))}
 						</div>
 						<span className="text-sm font-medium text-[#1A1A1A] dark:text-[#F3F4F6]">
-							{product.rating.rate}
+							{product.rating.toFixed(1)}
 						</span>
 						<span className="text-sm text-[#6B7280] dark:text-[#9CA3AF]">
-							({product.rating.count} reviews)
+							({product.reviews.length} reviews)
 						</span>
 					</div>
 
@@ -100,8 +129,15 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 						<span className="text-3xl font-bold text-[#1A1A1A] dark:text-[#F3F4F6]">
 							{formatPrice(product.price)}
 						</span>
+						{product.discountPercentage > 0 && (
+							<span className="text-base text-[#6B7280] dark:text-[#9CA3AF] line-through">
+								{formatPrice(
+									product.price / (1 - product.discountPercentage / 100),
+								)}
+							</span>
+						)}
 						<Badge className="bg-[#22C55E]/10 text-[#22C55E] border-0 rounded-full">
-							In Stock
+							{product.availabilityStatus}
 						</Badge>
 					</div>
 
@@ -114,6 +150,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 							{product.description}
 						</p>
 					</div>
+
+					{/* Stock */}
+					<p className="text-sm text-[#6B7280] dark:text-[#9CA3AF]">
+						<span className="font-medium text-[#1A1A1A] dark:text-[#F3F4F6]">
+							{product.stock}
+						</span>{" "}
+						items in stock
+					</p>
 
 					<Separator className="bg-[#E6E8EC] dark:bg-[#2A2F3A]" />
 
