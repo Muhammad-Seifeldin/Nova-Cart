@@ -98,8 +98,8 @@ export default function FilterSidebar() {
 							id="min-price"
 							type="range"
 							min={0}
-							max={1000}
-							step={10}
+							max={10000}
+							step={50}
 							value={minPrice}
 							onChange={(e) => setMinPrice(Number(e.target.value))}
 							className="w-full accent-[#5B6CFF]"
@@ -114,8 +114,8 @@ export default function FilterSidebar() {
 							id="max-price"
 							type="range"
 							min={0}
-							max={1000}
-							step={10}
+							max={10000}
+							step={50}
 							value={maxPrice}
 							onChange={(e) => setMaxPrice(Number(e.target.value))}
 							className="w-full accent-[#5B6CFF]"

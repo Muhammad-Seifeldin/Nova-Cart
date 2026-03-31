@@ -13,7 +13,7 @@ interface FilterStore extends FilterState {
 const defaultFilters: FilterState = {
 	category: "",
 	minPrice: 0,
-	maxPrice: 1000,
+	maxPrice: 10000,
 	minRating: 0,
 	searchQuery: "",
 };
