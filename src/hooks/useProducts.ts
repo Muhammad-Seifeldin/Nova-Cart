@@ -1,9 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-	fetchProducts,
-	fetchProductById,
-	fetchCategories,
-} from "@/api/fakestore";
+import { fetchProducts, fetchProductById } from "@/api/fakestore";
 import { useFilterStore } from "@/store/filterStore";
 import type { Product } from "@/types";
 
