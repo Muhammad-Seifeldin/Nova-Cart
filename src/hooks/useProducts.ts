@@ -45,11 +45,15 @@ export function useProduct(id: number) {
 }
 
 export function useCategories() {
-	return useQuery({
-		queryKey: ["categories"],
-		queryFn: fetchCategories,
-		staleTime: 1000 * 60 * 60,
+	const { data: products = [] } = useQuery({
+		queryKey: ["products"],
+		queryFn: fetchProducts,
+		staleTime: 1000 * 60 * 5,
 	});
+
+	const categories = [...new Set(products.map((p) => p.category))].sort();
+
+	return { data: categories, isLoading: false, isError: false };
 }
 
 export function useTrendingProducts() {
