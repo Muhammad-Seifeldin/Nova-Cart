@@ -9,7 +9,7 @@ const api = axios.create({
 
 export async function fetchProducts(): Promise<Product[]> {
 	const { data } = await api.get<{ products: Product[] }>(
-		"/products?limit=100",
+		"/products?limit=194",
 	);
 	return data.products;
 }
