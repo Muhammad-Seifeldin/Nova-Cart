@@ -34,7 +34,7 @@ const CartItem = memo(function CartItem({ item }: CartItemProps) {
 				className="shrink-0 bg-white dark:bg-[#0F1115] rounded-xl overflow-hidden w-24 h-24 flex items-center justify-center p-2"
 			>
 				<img
-					src={item.product.image}
+					src={item.product.thumbnail}
 					alt={item.product.title}
 					className="w-full h-full object-contain"
 				/>
